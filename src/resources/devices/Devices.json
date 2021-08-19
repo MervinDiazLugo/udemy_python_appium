@@ -1,0 +1,14 @@
+{
+  "Pixel": {
+        "platformName": "android",
+        "platformVersion": "11.0",
+        "deviceName": "Pixel",
+        "NoReset": "True"
+  },
+  "Pixel2": {
+      "platformName": "android",
+      "platformVersion": "11.0",
+      "deviceName": "Pixel",
+      "NoReset": "True"
+  }
+}
