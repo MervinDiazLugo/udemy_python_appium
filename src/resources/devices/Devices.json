@@ -7,8 +7,8 @@
   },
   "Pixel2": {
       "platformName": "android",
-      "platformVersion": "11.0",
-      "deviceName": "Pixel",
+      "platformVersion": "10.0",
+      "deviceName": "Pixel2",
       "NoReset": "True"
   }
 }

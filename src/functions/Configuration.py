@@ -2,7 +2,7 @@ import os
 
 
 class Configuration:
-    Environment = 'Test'
+    Environment = 'Local'
 
     basedir = os.path.abspath(os.path.join(__file__, "../.."))
     DateFormat = '%d/%m/%Y'

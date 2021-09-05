@@ -4,3 +4,6 @@ Feature: First appium test
 
   Scenario: test Scenario
     Given Start application in default device
+
+  Scenario: Scenario hardcoded
+    Given Application start with device Pixel2

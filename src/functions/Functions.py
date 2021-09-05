@@ -38,6 +38,11 @@ class Functions:
         self.desired_caps['app'] = Configuration.app
         return self.desired_caps
 
-    def get_driver(self, local_server=Configuration.local):
-        self.driver = webdriver.Remote(local_server, Functions.get_capabilities(self))
+    def get_driver(self, capabilities, local_server=Configuration.local):
+        self.driver = webdriver.Remote(local_server, capabilities)
+        Functions.check_app_is_running(self)
         return self.driver
+
+    def check_app_is_running(self):
+        activity = self.driver.current_activity
+        assert ".MainActivity" == activity, f"La Aplicacion {Configuration.app} no esta disponible"
