@@ -5,7 +5,7 @@
         "deviceName": "Pixel",
         "NoReset": "True"
   },
-  "Pixel2": {
+  "Pixel10": {
       "platformName": "android",
       "platformVersion": "10.0",
       "deviceName": "Pixel2",

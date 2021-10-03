@@ -12,12 +12,12 @@ class Configuration:
 
     if Environment == 'Local':
         app = basedir + u'/resources/binaries/apkpureL.com.apk'
-        device = "Pixel"
+        device = "Pixel10"
         port = 4723
         local = f"http://127.0.0.1:{port}/wd/hub"
 
     if Environment == 'Test':
         app = basedir + u'/resources/binaries/apkpureT.com.apk'
-        device = "Pixel2"
+        device = "Pixel10"
         port = 5001
         local = f"http://127.0.0.1:{port}/wd/hub"

@@ -1,3 +1,7 @@
+from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
 from functions.Configuration import Configuration
 from appium import webdriver
 import pytest
@@ -11,6 +15,10 @@ class Functions:
         self.device = {}
         self.desired_caps = {}
         self.driver = None
+
+    def returnDriver(self):
+        driver = self.driver
+        return driver
 
     def get_json_file(self, file, path=Configuration.devices_resources):
         json_path = path + "/" + file + '.json'
@@ -46,3 +54,27 @@ class Functions:
     def check_app_is_running(self):
         activity = self.driver.current_activity
         assert ".MainActivity" == activity, f"La Aplicacion {Configuration.app} no esta disponible"
+
+    def close_application(self):
+        self.driver.close_app()
+
+    def click_element(self, locator):
+        try:
+            Functions.implicit_wait_visible(self, locator)
+            self.driver.find_element(*locator).click()
+        except ValueError:
+            print("Element isn't clickable")
+
+    def setText(self, locator, text):
+        try:
+            Functions.implicit_wait_visible(self, locator)
+            self.driver.find_element(*locator).send_keys(text)
+        except ValueError:
+            print("Element isn't clickable")
+
+    def implicit_wait_visible(self, locator):
+        try:
+            wait = WebDriverWait(self.driver, 10)
+            wait.until(EC.visibility_of_element_located(locator))
+        except TimeoutException:
+            print("Element no visible")

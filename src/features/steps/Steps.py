@@ -1,6 +1,11 @@
 from behave import *
 from functions.Functions import Functions
+from pages.Lovetest import MainLoveTest
+import time
+
 use_step_matcher("re")
+
+MainLoveTest = MainLoveTest()
 
 
 @given("Start application in default device")
@@ -21,3 +26,22 @@ def step_impl(context, device):
     """
     desired_caps = Functions.get_capabilities(context, test_device=device)
     Functions.get_driver(context, capabilities=desired_caps)
+
+
+@then("Close application")
+def step_impl(context):
+    Functions.close_application(context)
+
+
+@when("I set (.*) and (.*) in LoveMain Page")
+def step_impl(context, arg1, arg2):
+    for row in context.table:
+        arg1 = row['YOURNAME']
+        arg2 = row['HERNAME']
+        Functions.setText(context, MainLoveTest.yourName_txt, arg1)
+        Functions.setText(context, MainLoveTest.herName_txt, arg2)
+
+
+@step("wait (.*) seconds")
+def step_impl(context, times):
+    time.sleep(int(times))
