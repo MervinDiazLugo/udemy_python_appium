@@ -36,11 +36,12 @@ def step_impl(context):
 @when("I set (.*) and (.*) in LoveMain Page")
 def step_impl(context, arg1, arg2):
     for row in context.table:
-        arg1 = row['YOURNAME']
-        arg2 = row['HERNAME']
-        Functions.setText(context, MainLoveTest.yourName_txt, arg1)
-        Functions.setText(context, MainLoveTest.herName_txt, arg2)
-
+        name1 = row['YOURNAME']
+        name2 = row['HERNAME']
+        Functions.implicit_wait_visible(context, MainLoveTest.title_lbl)
+        Functions.setText(context, MainLoveTest.yourName_txt, name1)
+        Functions.setText(context, MainLoveTest.herName_txt, name2)
+        Functions.click_element(context, MainLoveTest.next_btn)
 
 @step("wait (.*) seconds")
 def step_impl(context, times):

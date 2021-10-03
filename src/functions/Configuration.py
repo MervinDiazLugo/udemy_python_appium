@@ -1,8 +1,18 @@
 import os
+import features.environment
+
+
+def getEnvironment():
+    if features.environment.Environment is not None:
+        Environment = features.environment.Environment
+        return Environment
+    else:
+        return "Local"
 
 
 class Configuration:
-    Environment = 'Local'
+
+    Environment = "Local"
 
     basedir = os.path.abspath(os.path.join(__file__, "../.."))
     DateFormat = '%d/%m/%Y'
