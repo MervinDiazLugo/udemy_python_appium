@@ -70,11 +70,17 @@ class Functions:
             Functions.implicit_wait_visible(self, locator)
             self.driver.find_element(*locator).send_keys(text)
         except ValueError:
-            print("Element isn't clickable")
+            print("Cannot set text on element")
 
     def implicit_wait_visible(self, locator):
         try:
             wait = WebDriverWait(self.driver, 10)
             wait.until(EC.visibility_of_element_located(locator))
+        except TimeoutException:
+            print("Element no visible")
+
+    def get_element_text(self, locator):
+        try:
+            return self.driver.find_element(locator).text
         except TimeoutException:
             print("Element no visible")

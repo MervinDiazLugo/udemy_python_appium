@@ -1,11 +1,11 @@
 from behave import *
 from functions.Functions import Functions
-from pages.Lovetest import MainLoveTest
+from pages.Lovetest import LoveTest
 import time
 
 use_step_matcher("re")
 
-MainLoveTest = MainLoveTest()
+MainLoveTest = LoveTest()
 
 
 @given("Start application in default device")
@@ -38,10 +38,8 @@ def step_impl(context, arg1, arg2):
     for row in context.table:
         name1 = row['YOURNAME']
         name2 = row['HERNAME']
-        Functions.implicit_wait_visible(context, MainLoveTest.title_lbl)
-        Functions.setText(context, MainLoveTest.yourName_txt, name1)
-        Functions.setText(context, MainLoveTest.herName_txt, name2)
-        Functions.click_element(context, MainLoveTest.next_btn)
+        LoveTest.set_players(context, name1, name2)
+
 
 @step("wait (.*) seconds")
 def step_impl(context, times):
